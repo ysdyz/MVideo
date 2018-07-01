@@ -53,7 +53,7 @@ include("data/readcontent.class.php");
                 echo "<style>.navbar .nav > li .dropdown-menu {margin: 1px;}.navbar .nav > li:hover .dropdown-menu {display: block;}</style>";
             }
         ?>
-
+<!--[if lt IE 9]><style>body{overflow-y: hidden; }</style> <div class="browsehappy" role="dialog"><a href="http://browsehappy.com/">您的浏览器很滑稽，建议点击我升级您的浏览器！</a></div> <![endif]-->
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
