@@ -22,3 +22,15 @@ location / {
 	rewrite ^/search/?([^/]+)?/?$ /search.php?key=$1 last;
 }
 ```
+
+### Apache
+
+```
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (^|&)id=\$1($|&)
+RewriteRule ^index\.php$ /list/?([0-9]+)?/?$&%{QUERY_STRING}
+RewriteCond %{QUERY_STRING} (^|&)id=\$1($|&)
+RewriteRule ^play\.php$ /play/?([0-9]+)?/?$&%{QUERY_STRING}
+RewriteCond %{QUERY_STRING} (^|&)key=\$1($|&)
+RewriteRule ^search\.php$ /search/?([0-9]+)?/?$&%{QUERY_STRING}
+```
