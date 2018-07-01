@@ -27,10 +27,7 @@ location / {
 
 ```
 RewriteEngine On
-RewriteCond %{QUERY_STRING} (^|&)id=\$1($|&)
-RewriteRule ^index\.php$ /list/?([0-9]+)?/?$&%{QUERY_STRING}
-RewriteCond %{QUERY_STRING} (^|&)id=\$1($|&)
-RewriteRule ^play\.php$ /play/?([0-9]+)?/?$&%{QUERY_STRING}
-RewriteCond %{QUERY_STRING} (^|&)key=\$1($|&)
-RewriteRule ^search\.php$ /search/?([0-9]+)?/?$&%{QUERY_STRING}
+RewriteRule ^list/?([0-9]+)?/?$ index.php?id=$1
+RewriteRule ^play/?([0-9]+)?/?$ play.php?id=$1
+RewriteRule ^search/?([^/]+)?/?$ search.php?key=$1
 ```
