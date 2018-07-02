@@ -15,6 +15,7 @@ $(function () {
                 }
                 $('#ifrvideo').attr('src', $('#playlist ul li:eq(0) a').attr('data'));
                 $('.name').text(title + ' - ' + $('#playlist ul li:eq(0) a').text());
+                $('title').text(title + ' - ' + $('#playlist ul li:eq(0) a').text());
             }else{
                 $('.jz').text('emmm... 出现了一个错误，先去看一下别的剧吧！');
             }
@@ -23,5 +24,6 @@ $(function () {
     $(document.body).on("click", "li a", function () {
         $('#ifrvideo').attr('src', $(this).attr('data'));
         $('.name').text(title + ' - ' + $(this).text());
+        $('title').text(title + ' - ' + $(this).text());
     });
 });
