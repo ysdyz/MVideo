@@ -57,7 +57,7 @@ class ClassificationTwo{
 				return '福利 - ';
 				break;
 			case '17':
-				return '伦理剧 - ';
+				return '伦理片 - ';
 				break;
 			default:
 				# code...

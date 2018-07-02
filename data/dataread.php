@@ -35,9 +35,13 @@ function read_info()
             $title_id[1][$i] = preg_replace('/\/\?m=vod-detail-id-(\d+)\.html/i', '$1', $title_id[1][$i]);
 //        print_r("<li><span class='title' ><a href='javascript:void(0);' data-id='" . $title_id[1][$i] . "'>" . $title_id[2][$i] . "</a></span><span class='category'>" . $category[1][$i] . "</span><span class='date'>" . $date[1][$i] . "</span></li>");
 
-            echo json_encode(array('title' => $title_id[2][$i], 'id' => $title_id[1][$i], 'category' => $category[1][$i], 'date' => $date[1][$i]));
-            if ($i != $xunhuan - 1) {
-                echo ",";
+            if((stristr($category[1][$i], '福利') != false) || (stristr($category[1][$i], '伦理片') != false)){
+                
+            }else{
+                echo json_encode(array('title' => $title_id[2][$i], 'id' => $title_id[1][$i], 'category' => $category[1][$i], 'date' => $date[1][$i]));
+                if ($i != $xunhuan - 1) {
+                    echo ",";
+                }
             }
         }
         echo "]}";

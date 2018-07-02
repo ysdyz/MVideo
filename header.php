@@ -97,8 +97,6 @@ $ClassificationTwoc = new ClassificationTwo();
                 </li>
                 <li><a href="/list/3">综艺</a></li>
                 <li><a href="/list/4">动漫</a></li>
-                <li><a href="/list/16">福利</a></li>
-                <li><a href="/list/17">伦理剧</a></li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
                 <div class="input-group">

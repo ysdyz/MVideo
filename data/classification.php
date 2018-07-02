@@ -56,7 +56,7 @@ class Classification{
 			case '福利':
 				return '16';
 				break;
-			case '伦理剧':
+			case '伦理片':
 				return '17';
 				break;
 			default:
