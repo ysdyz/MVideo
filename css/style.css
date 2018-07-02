@@ -9,11 +9,34 @@ body {
     .list th,.list td,.jz a,#footer p,.breadcrumb,.drama,#playlist li{font-size:1.5rem;}
     .name{font-size:2.3rem;}
 }
-
+#playlist li {
+    list-style: none;
+    display: inline-block;
+    padding: 5px 5px;
+    width:30.8rem;
+}
 @media only screen and (max-width: 1560px){
    .list th,.list td,.jz a,#footer p,.breadcrumb,.drama,#playlist li{font-size:1.3rem;}
    .name{font-size:2.0rem;}
+   #playlist li {
+        list-style: none;
+        display: inline-block;
+        padding: 5px 5px;
+        width:30.8rem;
+    }
 }
+
+@media only screen and (max-width: 768px){
+   .list th,.list td,.jz a,#footer p,.breadcrumb,.drama,#playlist li{font-size:1.3rem;}
+   .name{font-size:2.0rem;}
+   #playlist li {
+        list-style: none;
+        display: inline-block;
+        padding: 5px 5px;
+        width:28.7rem;
+    }
+}
+
 
 .container a {
     text-decoration: none;
@@ -40,11 +63,7 @@ body {
     margin-bottom: 10px;
 }
 
-#playlist li {
-    list-style: none;
-    display: inline-block;
-    padding: 5px 5px;
-}
+
 
 .zzjz {
     display: block;
@@ -64,9 +83,11 @@ body {
     -moz-border-radius: 5px;
     border-radius: 5px;
     text-align: center;
-    white-space: normal;
-    overflow: hidden;
     padding: 5px 18px;
+    width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #playlist ul li a:hover {
@@ -87,7 +108,6 @@ body {
     padding: 15px;
     background-color: #ffffff;
     border-radius: 5px;
-    text-align: center;
 }
 
 #video {
