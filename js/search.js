@@ -6,16 +6,12 @@ function jiazai(key) {
         dataType: "json",
         success: function (data) {
             if (data.status == "success") {
-                if (Object.keys(data.result).length == 0) {
-                    $('.jz').text('找不到关于 ' + key + ' 的相关结果');
-                }else{
-                    $('.jz').remove();
-                    for (var i = 0; i < Object.keys(data.result).length; i++) {
-                        $('.table tbody').append("<tr><td><a href=\"javascript:void(0);\" data-id=\"" + data.result[i].id + "\">" + data.result[i].title + "</a></td><td>" + data.result[i].category + "</td><td>" + data.result[i].date + "</td></tr>");
-                    }
+                $('.jz').remove();
+                for (var i = 0; i < Object.keys(data.result).length; i++) {
+                    $('.table tbody').append("<tr><td><a href=\"javascript:void(0);\" data-id=\"" + data.result[i].id + "\">" + data.result[i].title + "</a></td><td>" + data.result[i].category + "</td><td>" + data.result[i].date + "</td></tr>");
                 }
             }else{
-                $('.jz').text('emmm... 出现了一个错误，先去看一下别的剧吧！');
+                $('.jz').text('找不到关于 ' + key + ' 的相关结果');
             }
         }
     });
