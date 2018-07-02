@@ -5,7 +5,6 @@
  * Date: 2018/6/29
  * Time: 11:11
  */
-
 include("readcontent.class.php");
 $readcontent = new Read_content();
 

@@ -15,7 +15,7 @@ function jiazai(key) {
                     }
                 }
             }else{
-                $('.jz').text('系统繁忙请稍后再试！');
+                $('.jz').text('emmm... 出现了一个错误，先去看一下别的剧吧！');
             }
         }
     });

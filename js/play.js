@@ -16,7 +16,7 @@ $(function () {
                 $('#ifrvideo').attr('src', $('#playlist ul li:eq(0) a').attr('data'));
                 $('.name').text(title + ' - ' + $('#playlist ul li:eq(0) a').text());
             }else{
-                $('.jz').text('系统繁忙请稍后再试！');
+                $('.jz').text('emmm... 出现了一个错误，先去看一下别的剧吧！');
             }
         }
     });

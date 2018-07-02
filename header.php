@@ -7,20 +7,26 @@
  */
 $id = isset($_GET['id']) ? $_GET['id'] : 'index';
 include("data/readcontent.class.php");
+include("data/classification.php");
+include("data/ClassificationTwo.php");
+$ClassificationTwoc = new ClassificationTwo();
 ?>
 <html>
 <head>
     <?php if (stristr($_SERVER['PHP_SELF'], 'play') != false) { 
             $readcontent = new Read_content();
+            $classificationc = new Classification();
             $contenturl = "http://zuida.me/" . "?m=vod-detail-id-" . $_GET['id'] . ".html";
             $contentInfo = $readcontent->MloocCurl($contenturl);
             $ruleMatchDetailInList = "~<h2>(.*?)<\/h2>~";#正则表达式
             preg_match($ruleMatchDetailInList, $contentInfo, $title);
             $ruleMatchDetailInList = "~<span class=\"more\" txt=\"(.*?)\">~";#正则表达式
             preg_match($ruleMatchDetailInList, $contentInfo, $drama);
+            $ruleMatchDetailInList = "/html\",\"(.*?)\",\"\//s";#正则表达式
+            preg_match($ruleMatchDetailInList, $contentInfo, $classification);
         } 
     ?>
-    <title><?php if (stristr($_SERVER['PHP_SELF'], 'search') != false) {echo "搜索 - ";} elseif (stristr($_SERVER['PHP_SELF'],'index' ) != false) {if ($id == '1') {echo '电影 - ';} elseif ($id == '2') {echo '肥皂剧 - ';} elseif ($id == '3') {echo '综艺 - ';} elseif ($id == '4') {echo '动漫 - ';} elseif ($id == '5') {echo '动作片 - ';} elseif ($id == '6') {echo '喜剧片 - ';} elseif ($id == '7') {echo '爱情片 - ';} elseif ($id == '8') {echo '科幻片 - ';} elseif ($id == '9') {echo '恐怖片 - ';} elseif ($id == '10') {echo '剧情片 - ';} elseif ($id == '11') {echo '战争片 - ';} elseif ($id == '12') {echo '国产剧 - ';} elseif ($id == '13') {echo '港台剧 - ';} elseif ($id == '14') {echo '日韩剧 - ';} elseif ($id == '15') {echo '欧美剧 - ';} elseif ($id == '16') {echo '福利 - ';} elseif ($id == '17') {echo '伦理剧 - ';} }elseif(stristr($_SERVER['PHP_SELF'], 'play') != false){echo $title[1].' - ';}?>MVideo</title>
+    <title><?php if (stristr($_SERVER['PHP_SELF'], 'search') != false) {echo "搜索 - ";} elseif (stristr($_SERVER['PHP_SELF'],'index' ) != false) {echo $ClassificationTwoc->switch ($id);}elseif(stristr($_SERVER['PHP_SELF'], 'play') != false){echo $title[1].' - ';}?>MVideo</title>
     <meta name="keywords" content="<?php if (stristr($_SERVER['PHP_SELF'],'index' ) != false || stristr($_SERVER['PHP_SELF'],'search' ) != false) {echo 'MVideo,Mlooc Video';}elseif(stristr($_SERVER['PHP_SELF'], 'play') != false){echo $title[1];}?>">
     <meta name="description" content="<?php if (stristr($_SERVER['PHP_SELF'],'index' ) != false || stristr($_SERVER['PHP_SELF'],'search' ) != false) {echo 'MVideo自动采集影视系统,免费看全网视频。';}elseif(stristr($_SERVER['PHP_SELF'], 'play') != false){echo $drama[1];}?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

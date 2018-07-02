@@ -37,7 +37,7 @@ function read_info()
 	        }
 	        echo "]}";
     }else {
-	        echo "{\"status\":\"error\"]}";
+	        echo "{\"status\":\"error\"}";
 	}
     
 }

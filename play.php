@@ -7,12 +7,13 @@
  */
 include('header.php');
 ?>
-<span class="zzjz">正在载入中...</span>
+<span class="zzjz">正在使出吃奶的劲加载中...</span>
 <div class="container">
     <div class="address">
         <ol class="breadcrumb">
             当前位置：
             <li><a href="/">主页</a></li>
+            <li><a href="/list/<?php echo $classificationc->switch($classification[1]); ?>"><?php echo $classification[1]; ?></a></li>
             <li class="active"><?php echo $title[1]; ?></li>
         </ol>
     </div>
