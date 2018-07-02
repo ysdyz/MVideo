@@ -6,21 +6,23 @@ body {
 }
 
 @media only screen and (min-width: 1560px){
-    .list th,.list td,.jz a,#footer p,.breadcrumb,.drama,#playlist li{font-size:1.5rem;}
+    .list th,.list td,.jz a,.breadcrumb,.drama,#playlist li{font-size:1.5rem;}
     .name{font-size:2.3rem;}
-    #playlist li {list-style: none;display: inline-block;padding: 5px 5px;width:30.8rem;}
+    #footer p{font-size:1.25rem;}
+    #playlist li {list-style: none;display: inline-block;padding: 5px 5px;width:25%;}
 }
 
 @media only screen and (max-width: 1560px){
-   .list th,.list td,.jz a,#footer p,.breadcrumb,.drama,#playlist li{font-size:1.3rem;}
+   .list th,.list td,.jz a,.breadcrumb,.drama,#playlist li{font-size:1.3rem;}
    .name{font-size:2.0rem;}
-   #playlist li {list-style: none;display: inline-block;padding: 5px 5px;width:30.8rem;}
+   #footer p{font-size:1rem;}
+   #playlist li {list-style: none;display: inline-block;padding: 5px 5px;width:33%;}
 }
 
 @media only screen and (max-width: 768px){
-   .list th,.list td,.jz a,#footer p,.breadcrumb,.drama,#playlist li{font-size:1.3rem;}
+   .list th,.list td,.jz a,#footer p,.breadcrumb,.drama,#playlist li{font-size:1rem;}
    .name{font-size:2.0rem;}
-   #playlist li {list-style: none;display: inline-block;padding: 5px 5px;width:28.7rem;
+   #playlist li {list-style: none;display: inline-block;padding: 5px 5px;width:50%;
     }
 }
 
