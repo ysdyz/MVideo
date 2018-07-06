@@ -6,14 +6,46 @@
  * Time: 17:10
  */
 include('header.php');
+$listId = $classificationc->switch($classification[1]);
 ?>
+
+<?php if ($listId == '16' || $listId == '17') {
+    if (isset($_COOKIE["fulilunliju"])) {
+        if ($_COOKIE["fulilunliju"] != $password) {
+            exit('<div class="mingganziyuan">敏感资源已被屏蔽！</div>');
+        }
+    } else {
+        exit('<div class="mingganziyuan">敏感资源已被屏蔽！</div>');
+    }
+} ?>
 <span class="zzjz">正在使出吃奶的劲加载中...</span>
+<div class="loader">
+    <div class="loader-inner">
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+        <div class="loader-line-wrap">
+            <div class="loader-line"></div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="address">
         <ol class="breadcrumb">
             当前位置：
             <li><a href="/">主页</a></li>
-            <li><a href="/list/<?php echo $classificationc->switch($classification[1]); ?>"><?php echo $classification[1]; ?></a></li>
+            <li>
+                <a href="/list/<?php echo $listId; ?>"><?php echo $classification[1]; ?></a>
+            </li>
             <li class="active"><?php echo $title[1]; ?></li>
         </ol>
     </div>
@@ -30,6 +62,7 @@ include('header.php');
     </div>
 </div>
 <?php include('footer.php'); ?>
+
 </body>
 <script>
     var id = '<?php echo $_GET['id'] ?>';

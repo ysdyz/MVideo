@@ -1,98 +1,118 @@
 ﻿<!DOCTYPE html>
 <html mip>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="//mipcache.bdstatic.com/static/v1/mip.css">
-        <title>页面不存在</title>
-        <style mip-custom>
+<head>
+    <title>页面不存在</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
+    <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/mip.css">
+    <style mip-custom>
         .page {
-		    width: 500px;
-		    margin: 5% auto 0;
-		    text-align: center;
-		    border: #ddd 1px solid;
-		    border-radius: 8px;
-		    padding: 30px 0 20px;
-		    box-shadow: 0 0 30px #eee;
+            width: 90%;
+            margin: 5% auto 0;
+            text-align: center;
+            border: #ddd 1px solid;
+            border-radius: 8px;
+            padding: 30px 0 20px;
+            box-shadow: 0 0 30px #eee;
         }
-        .page div{
-			font-size: 2vw;
-		    text-align: center;
-		    color: #FF4949;
-		    margin-bottom: 25px;
-		    position: relative;
+
+        .page div {
+            font-size: 2vw;
+            text-align: center;
+            color: #FF4949;
+            margin-bottom: 25px;
+            position: relative;
         }
+
         .success {
             color: #00AAEE;
         }
-        .page img{
+
+        .page img {
             display: block;
         }
-        .page p{
+
+        .page p {
             margin-bottom: 15px;
             color: #888;
         }
-        .page a{
+
+        .page a {
             color: #888;
         }
-        .page_title{
-        	font-size: 16px;
+
+        .page_title {
+            font-size: 16px;
         }
-        .page_title i{
-        	font-style: inherit;
+
+        .page_title i {
+            font-style: inherit;
         }
-        .page .title{
-		    font-size: 34px;
-		    margin-bottom: 5px;
-		    padding-bottom: 0;
-		    color: #111;
-		    font-family: "微软雅黑";
+
+        .page .title {
+            font-size: 34px;
+            margin-bottom: 5px;
+            padding-bottom: 0;
+            color: #111;
+            font-family: "微软雅黑";
         }
-        .page .futitle{
-        	font-size: 16px;
-        	margin-top: 10px;
-        	color:#888;
+
+        .page .futitle {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #888;
         }
-       .page mip-img{
-        	margin: 20px 0 30px;
+
+        .page mip-img {
+            margin: 20px 0 30px;
         }
-        </style>
-    </head>
-    <body>
+    </style>
+</head>
+<body>
+<div class="container">
     <div class="page">
-                    <div>
-            	 <div class="title">
-                    404                </div>
-				                	<div class="futitle">很抱歉，您要访问的页面不存在！</div>
-                                <mip-img
-                    layout="full" 
-                    width="100" 
+        <div>
+            <div class="title">
+                404
+            </div>
+            <div class="futitle">很抱歉，您要访问的页面不存在！</div>
+            <mip-img
+                    layout="full"
+                    width="100"
                     height="100"
                     src="/img/warning.png">
-                </mip-img>
-            </div>
-            <p></p>
-            <p class="page_title"><i class="code">3</i>&nbsp;秒后将自动跳转到主页<a href="/" style="color: #20a53a;">&nbsp;&nbsp;&nbsp;点击跳转</a></p>
+            </mip-img>
+        </div>
+        <p></p>
+        <p class="page_title"><i class="code">3</i>&nbsp;秒后将自动跳转到主页<a href="/" style="color: #20a53a;">&nbsp;&nbsp;&nbsp;点击跳转</a>
+        </p>
     </div>
-        <script src="//mipcache.bdstatic.com/static/v1/mip.js"></script>
-        <script src="//mipcache.bdstatic.com/static/v1/mip-stats-baidu/mip-stats-baidu.js"></script>
-        <script type="text/javascript">
-        	window.onload = function(){
-        		var times = 3;
-				var code = document.getElementsByClassName('code')[0];
-        		function cycleTimer(timer){
-					if (timer == 0) {
-						window.top.location.href ='/'; 
-					} else {
-					  setTimeout(function() {
-						timer--;
-						code.innerHTML = timer;
-						cycleTimer(timer);
-					  }, 1000);
-					}
-				}
-        		cycleTimer(3);
-        	}
-        </script>
-    </body>
+</div>
+<script src="/js/mip.js"></script>
+<script src="/js/mip-stats-baidu.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        var times = 3;
+        var code = document.getElementsByClassName('code')[0];
+
+        function cycleTimer(timer) {
+            if (timer == 0) {
+                window.top.location.href = '/';
+            } else {
+                setTimeout(function () {
+                    timer--;
+                    code.innerHTML = timer;
+                    cycleTimer(timer);
+                }, 1000);
+            }
+        }
+
+        cycleTimer(3);
+    }
+</script>
+</body>
 </html>
