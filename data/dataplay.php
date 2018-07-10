@@ -71,7 +71,7 @@ if ($contentCount != 0) {
 
             //print_r("<li data='http://v.mlooc.cn/public/player/player.php?url=" .  . "'>" .  . "</li>");
 
-            echo json_encode(array('url' => '/player/player.php?url=' . explode('$', $content[1][$i])[1], 'collection' => explode('$', $content[1][$i])[0]), JSON_UNESCAPED_SLASHES);
+            echo json_encode(array('url' => 'https://api.mlooc.cn/Mvideo/player/player.php?url=' . explode('$', $content[1][$i])[1], 'collection' => explode('$', $content[1][$i])[0]), JSON_UNESCAPED_SLASHES);
 
             if ($i != $m3u8Count - 1) {
 
@@ -93,7 +93,7 @@ if ($contentCount != 0) {
 
             //print_r("<li data='http://v.mlooc.cn/public/player/player.php?url=" .  . "'>" .  . "</li>");
 
-            echo json_encode(array('url' => '/player/player.php?url=' . explode('$', $content[1][$i])[1], 'collection' => explode('$', $content[1][$i])[0]), JSON_UNESCAPED_SLASHES);
+            echo json_encode(array('url' => 'https://api.mlooc.cn/Mvideo/player/player.php?url=' . explode('$', $content[1][$i])[1], 'collection' => explode('$', $content[1][$i])[0]), JSON_UNESCAPED_SLASHES);
 
             if ($i != $mp4Count - 1) {
 
