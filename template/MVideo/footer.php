@@ -20,5 +20,5 @@
     </div>
 </div>
 <div style="display:none">
-    <script type="text/javascript" src="//js.users.51.la/19549313.js"></script>
+    <!-- 统计代码 -->
 </div>
