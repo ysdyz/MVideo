@@ -46,7 +46,7 @@ include('header.php');
                     style="width:100%;border:none;height: 50%;"></iframe>
         <?php } elseif (equipment_UA() == "Phone") {
             ?>
-            <video id="ifrvideo" src="" controls="controls" width="100%" height="100%"
+            <video id="ifrvideo" src="" controls="controls" width="100%" height="200px"
                    x-webkit-airplay="allow"></video>
         <?php } ?>
     </div>
