@@ -24,8 +24,6 @@
     <script src="/template/MVideo/js/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <?php
-    //判断是否为播放页面
-    play_Two();
     //判断是否为播放页或直播页
     if (stristr($_SERVER['PHP_SELF'], 'play') != false || stristr($_SERVER['PHP_SELF'], 'zhibo') != false) {
         //隐藏页面内容等待加载完成

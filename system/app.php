@@ -18,12 +18,16 @@ $template = $configs['template'];
 $Sensitive = $configs['Sensitive'];
 $Sensitive_password = $configs['Sensitive_password'];
 $id = isset($_GET['id']) ? $_GET['id'] : 'index';
-function play_title()
-{
-    global $readcontent;
-    $classificationc = new Classification();
+
+if (stristr($_SERVER['PHP_SELF'], "play") != false) {
     $contenturl = "http://zuida.me/" . "?m=vod-detail-id-" . $_GET['id'] . ".html";
     $contentInfo = $readcontent->MloocCurl($contenturl);
+}
+
+function play_title()
+{
+    global $contentInfo;
+    $classificationc = new Classification();
     $ruleMatchDetailInList = "~<h2>(.*?)<\/h2>~";#正则表达式
     preg_match($ruleMatchDetailInList, $contentInfo, $title);
     return $title[1];
@@ -32,10 +36,8 @@ function play_title()
 
 function play_drama()
 {
-    global $readcontent;
+    global $contentInfo;
     $classificationc = new Classification();
-    $contenturl = "http://zuida.me/" . "?m=vod-detail-id-" . $_GET['id'] . ".html";
-    $contentInfo = $readcontent->MloocCurl($contenturl);
     $ruleMatchDetailInList = "~<span class=\"more\" txt=\"(.*?)\">~";#正则表达式
     preg_match($ruleMatchDetailInList, $contentInfo, $drama);
     return $drama[1];
@@ -45,9 +47,7 @@ function play_drama()
 
 function play_classtitle()
 {
-    global $readcontent;
-    $contenturl = "http://zuida.me/" . "?m=vod-detail-id-" . $_GET['id'] . ".html";
-    $contentInfo = $readcontent->MloocCurl($contenturl);
+    global $contentInfo;
     $ruleMatchDetailInList = "/html\",\"(.*?)\",\"\//s";#正则表达式
     preg_match($ruleMatchDetailInList, $contentInfo, $classification);
     return $classification[1];
@@ -61,7 +61,6 @@ function play_classification()
 
 function title()
 {
-
     $selfUrl = $_SERVER['PHP_SELF'];
     global $id;
     global $name;
@@ -97,18 +96,6 @@ function description()
         echo $description;
     } elseif (stristr($_SERVER['PHP_SELF'], 'play') != false) {
         echo play_drama();
-    }
-}
-
-function play_Two()
-{
-    $selfUrl = $_SERVER['PHP_SELF'];
-    global $readcontent;
-    if (stristr($selfUrl, 'play') != false) {
-        $contenturl = "http://zuida.me/" . "?m=vod-detail-id-" . $_GET['id'] . ".html";
-        $contentInfo = $readcontent->MloocCurl($contenturl);
-        $ruleMatchDetailInList = "~<h2>(.*?)<\/h2>~";#正则表达式
-        preg_match($ruleMatchDetailInList, $contentInfo, $title);
     }
 }
 
