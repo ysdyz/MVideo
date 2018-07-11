@@ -26,5 +26,5 @@ include('header.php');
 <?php include('footer.php'); ?>
 </body>
 <script>var key = '<?php echo $_GET['key']; ?>';</script>
-<script src="/js/search.js"></script>
+<script src="<?php echo "/template/" . $template ?>/js/search.js"></script>
 </html>

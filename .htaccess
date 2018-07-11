@@ -1,4 +1,6 @@
 RewriteEngine On
 RewriteRule ^list/?([0-9]+)?/?$ index.php?id=$1
-RewriteRule ^play/?([0-9]+)?/?$ play.php?id=$1
-RewriteRule ^search/?([^/]+)?/?$ search.php?key=$1
+RewriteRule ^play/?([0-9]+)?/?$ lib/play.php?id=$1
+RewriteRule ^search/([^/]+)/?$ lib/search.php?key=$1
+RewriteRule ^zhibo.html lib/zhibo.php
+RewriteRule ^password.html lib/password.php

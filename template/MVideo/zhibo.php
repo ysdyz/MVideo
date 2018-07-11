@@ -6,18 +6,7 @@
  * Time: 17:10
  */
 include('header.php');
-$listId = $classificationc->switch($classification[1]);
 ?>
-
-<?php if ($listId == '16' || $listId == '17') {
-    if (isset($_COOKIE["fulilunliju"])) {
-        if ($_COOKIE["fulilunliju"] != $password) {
-            exit('<div class="mingganziyuan">敏感资源已被屏蔽！</div>');
-        }
-    } else {
-        exit('<div class="mingganziyuan">敏感资源已被屏蔽！</div>');
-    }
-} ?>
 <span class="zzjz">正在使出吃奶的劲加载中...</span>
 <div class="loader">
     <div class="loader-inner">
@@ -43,19 +32,23 @@ $listId = $classificationc->switch($classification[1]);
         <ol class="breadcrumb">
             当前位置：
             <li><a href="/">主页</a></li>
-            <li>
-                <a href="/list/<?php echo $listId; ?>"><?php echo $classification[1]; ?></a>
-            </li>
-            <li class="active"><?php echo $title[1]; ?></li>
+            <li class="active">直播</li>
         </ol>
     </div>
     <div class="info">
-        <h3 class="name"><?php echo $title[1]; ?></h3>
-        <p class="drama"><?php echo $drama[1]; ?></p>
+        <h3 class="name"></h3>
     </div>
     <div id="video">
-        <iframe id="ifrvideo" allowfullscreen="true" scrolling="no" allowtransparency="true" src=""
-                style="width:100%;border:none;height: 50%;"></iframe>
+        <?php
+        if (equipment_UA() == "PC") {
+            ?>
+            <iframe id="ifrvideo" allowfullscreen="true" scrolling="no" allowtransparency="true" src=""
+                    style="width:100%;border:none;height: 50%;"></iframe>
+        <?php } elseif (equipment_UA() == "Phone") {
+            ?>
+            <video id="ifrvideo" src="" controls="controls" width="100%" height="100%"
+                   x-webkit-airplay="allow"></video>
+        <?php } ?>
     </div>
     <div id="playlist">
         <ul></ul>
@@ -64,8 +57,13 @@ $listId = $classificationc->switch($classification[1]);
 <?php include('footer.php'); ?>
 
 </body>
-<script>
-    var id = '<?php echo $_GET['id'] ?>';
-</script>
-<script src="/js/play.js"></script>
+<?php
+if (equipment_UA() == "PC") {
+    ?>
+    <script src="<?php echo "/template/" . $template ?>/js/zhiboPC.js"></script>
+<?php } elseif (equipment_UA() == "Phone") {
+    ?>
+    <script src="<?php echo "/template/" . $template ?>/js/zhiboPhone.js"></script>
+<?php } ?>
+
 </html>

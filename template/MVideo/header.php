@@ -5,77 +5,34 @@
  * Date: 2018/6/30
  * Time: 10:42
  */
-$id = isset($_GET['id']) ? $_GET['id'] : 'index';
-include("data/readcontent.class.php");
-include("data/classification.php");
-include("data/ClassificationTwo.php");
-include('data/pwd.php');
-$ClassificationTwoc = new ClassificationTwo();
+
 ?>
 <html>
 <head>
-    <?php if (stristr($_SERVER['PHP_SELF'], 'play') != false) {
-        $readcontent = new Read_content();
-        $classificationc = new Classification();
-        $contenturl = "http://zuida.me/" . "?m=vod-detail-id-" . $_GET['id'] . ".html";
-        $contentInfo = $readcontent->MloocCurl($contenturl);
-        $ruleMatchDetailInList = "~<h2>(.*?)<\/h2>~";#正则表达式
-        preg_match($ruleMatchDetailInList, $contentInfo, $title);
-        $ruleMatchDetailInList = "~<span class=\"more\" txt=\"(.*?)\">~";#正则表达式
-        preg_match($ruleMatchDetailInList, $contentInfo, $drama);
-        $ruleMatchDetailInList = "/html\",\"(.*?)\",\"\//s";#正则表达式
-        preg_match($ruleMatchDetailInList, $contentInfo, $classification);
-    }
-    ?>
-    <title><?php if (stristr($_SERVER['PHP_SELF'], 'search') != false) {
-            echo "搜索 - ";
-        } elseif (stristr($_SERVER['PHP_SELF'], 'index') != false) {
-            echo $ClassificationTwoc->switch($id);
-        } elseif (stristr($_SERVER['PHP_SELF'], 'play') != false) {
-            echo $title[1] . ' - ';
-        } ?>MVideo</title>
+    <title><?php title(); ?></title>
     <meta name="keywords"
-          content="<?php if (stristr($_SERVER['PHP_SELF'], 'index') != false || stristr($_SERVER['PHP_SELF'], 'search') != false) {
-              echo 'MVideo,Mlooc Video';
-          } elseif (stristr($_SERVER['PHP_SELF'], 'play') != false) {
-              echo $title[1];
-          } ?>">
+          content="<?php keywords(); ?>">
     <meta name="description"
-          content="<?php if (stristr($_SERVER['PHP_SELF'], 'index') != false || stristr($_SERVER['PHP_SELF'], 'search') != false) {
-              echo 'MVideo自动采集影视系统,免费看全网视频。';
-          } elseif (stristr($_SERVER['PHP_SELF'], 'play') != false) {
-              echo $drama[1];
-          } ?>">
+          content="<?php description(); ?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
     <meta name="renderer" content="webkit|ie-comp|ie-stand"/>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <script src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/template/MVideo/css/style.css">
+    <script src="/template/MVideo/js/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <?php if (stristr($_SERVER['PHP_SELF'], 'play') != false) {
-        echo "<style>.container{display:none}</style>";
-        $readcontent = new Read_content();
-        $contenturl = "http://zuida.me/" . "?m=vod-detail-id-" . $_GET['id'] . ".html";
-        $contentInfo = $readcontent->MloocCurl($contenturl);
-        $ruleMatchDetailInList = "~<h2>(.*?)<\/h2>~";#正则表达式
-        preg_match($ruleMatchDetailInList, $contentInfo, $title);
-    }
-    ?>
     <?php
-    $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
-    $is_pc = (stripos($agent, 'windows nt')) ? true : false;
-    $is_iphone = (stripos($agent, 'iphone')) ? true : false;
-    $is_ipad = (stripos($agent, 'ipad')) ? true : false;
-    $is_android = (stripos($agent, 'android')) ? true : false;
-    $id_iPod = (stripos($agent, 'ipod')) ? true : false;
-    //输出数据
-    if ($is_pc) {
-        echo "<style>.navbar .nav > li .dropdown-menu {margin: 1px;}.navbar .nav > li:hover .dropdown-menu {display: block;}</style>";
+    //判断是否为播放页面
+    play_Two();
+    //判断是否为播放页或直播页
+    if (stristr($_SERVER['PHP_SELF'], 'play') != false || stristr($_SERVER['PHP_SELF'], 'zhibo') != false) {
+        //隐藏页面内容等待加载完成
+        echo "<style>.container{display:none}</style>";
     }
     ?>
+    <style id="shebei"></style>
 
     <!--[if lt IE 9]>
     <style>body {
@@ -120,15 +77,10 @@ $ClassificationTwoc = new ClassificationTwo();
                 </li>
                 <li><a href="/list/3">综艺</a></li>
                 <li><a href="/list/4">动漫</a></li>
-                <?php if (isset($_COOKIE["fulilunliju"])) {
-                    if ($_COOKIE["fulilunliju"] != $password) {
-
-                    } else {
-                        echo "<li><a href=\"/list/16\">福利</a></li>";
-                        echo "<li><a href=\"/list/17\">伦理</a></li>";
-                    }
-                } else {
-
+                <li><a href="/zhibo.html">直播</a></li>
+                <?php if (nav() == true) {
+                    echo "<li><a href=\"/list/16\">福利</a></li>";
+                    echo "<li><a href=\"/list/17\">伦理</a></li>";
                 } ?>
             </ul>
             <form class="navbar-form navbar-right" role="search">
@@ -154,9 +106,13 @@ $ClassificationTwoc = new ClassificationTwo();
                 $(".btn-primary").trigger("click");
             }
         });
-        <?php if ($is_iphone || $is_ipad || $is_android || $id_iPod) {
-        echo "$(\".dropdown\").find(\"a:eq(0)\").attr({'href':'#','class':'dropdown-toggle','data-toggle':'dropdown'});";
-    } ?>
-
+        <?php
+        //判断设备
+        if (equipment_UA() == "Phone") {
+            echo "$(\".dropdown\").find(\"a:eq(0)\").attr({'href':'#','class':'dropdown-toggle','data-toggle':'dropdown'});";
+        } elseif (equipment_UA() == "PC") {
+            echo "$('#shebei').text('.navbar .nav > li .dropdown-menu {margin: 1px;}.navbar .nav > li:hover .dropdown-menu {display: block;}');";
+        }
+        ?>
     });
 </script>
