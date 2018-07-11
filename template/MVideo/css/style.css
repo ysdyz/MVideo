@@ -372,3 +372,19 @@ a, button, .btn-primary, .btn-block {
 input {
     cursor: url("../img/xdtext.cur"), pointer;
 }
+
+/*全局选中颜色*/
+::selection {
+    background: #B0E2FF;
+    color: #6F8EC5;
+}
+
+::-moz-selection {
+    background: #B0E2FF;
+    color: #6F8EC5;
+}
+
+::-webkit-selection {
+    background: #B0E2FF;
+    color: #6F8EC5;
+}
