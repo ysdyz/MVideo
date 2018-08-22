@@ -36,7 +36,7 @@ if ($contentCount != 0) {
 
     if ($m3u8Count != 0) {
         for ($i = 0; $i < $m3u8Count; $i++) {
-            $result[$i]['url'] = '//api.mlooc.cn/Mvideo/player/player.php?url=' . explode('$', $content[1][$i])[1];
+            $result[$i]['url'] = '/player/player.php?url=' . explode('$', $content[1][$i])[1];
             $result[$i]['collection'] = explode('$', $content[1][$i])[0];
         }
         $contenf_json['result'] = $result;
@@ -45,7 +45,7 @@ if ($contentCount != 0) {
     }
     if ($mp4Count != 0) {
         for ($i = 0; $i < $mp4Count; $i++) {
-            $result[$i]['url'] = '//api.mlooc.cn/Mvideo/player/player.php?url=' . explode('$', $content[1][$i])[1];
+            $result[$i]['url'] = '/player/player.php?url=' . explode('$', $content[1][$i])[1];
             $result[$i]['collection'] = explode('$', $content[1][$i])[0];
         }
         $contenf_json['result'] = $result;
