@@ -10,10 +10,8 @@
 <html>
 <head>
     <title><?php title(); ?></title>
-    <meta name="keywords"
-          content="<?php keywords(); ?>">
-    <meta name="description"
-          content="<?php description(); ?>">
+    <meta name="keywords" content="<?php keywords(); ?>">
+    <meta name="description" content="<?php description(); ?>">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10"/>
@@ -25,7 +23,7 @@
     <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <?php
     //判断是否为播放页或直播页
-    if (stristr($_SERVER['PHP_SELF'], 'play') != false || stristr($_SERVER['PHP_SELF'], 'zhibo') != false) {
+    if (stristr($_SERVER['PHP_SELF'], 'play') != false) {
         //隐藏页面内容等待加载完成
         echo "<style>.container{display:none}</style>";
     }
@@ -75,19 +73,17 @@
                 </li>
                 <li><a href="/list/3">综艺</a></li>
                 <li><a href="/list/4">动漫</a></li>
-                <li><a href="/zhibo.html">直播</a></li>
                 <?php if (nav() == true) {
                     echo "<li><a href=\"/list/16\">福利</a></li>";
                     echo "<li><a href=\"/list/17\">伦理</a></li>";
                 } ?>
             </ul>
-            <form class="navbar-form navbar-right" role="search">
+            <div class="navbar-form navbar-right" role="search">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon btn btn-primary "><span
-                                class="glyphicon glyphicon-search"></span></span>
+                    <span class="input-group-addon btn btn-primary "><span class="glyphicon glyphicon-search"></span></span>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </nav>
