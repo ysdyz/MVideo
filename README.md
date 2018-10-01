@@ -15,7 +15,7 @@
 
 推荐配置：Nginx+PHP7.1
 
-演示站点：[https://v.mlooc.cn](https://v.mlooc.cn)
+演示站点：[http://v.mlooc.cn](http://v.mlooc.cn)
 
 
 ## 伪静态配置规则
